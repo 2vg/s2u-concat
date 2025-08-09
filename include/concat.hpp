@@ -29,6 +29,7 @@
 #	include <stddef.h>
 
 #	include <array>
+#	include <type_traits>
 
 #	include <tier0/platform.h>
 #	include <tier0/bufferstring.h>
@@ -127,8 +128,10 @@ public:
 		{
 			return GetKeyString<INSERT_BEFORE>(aKey);
 		}
-
-		return GetKey<INSERT_BEFORE>(aKey);
+		else
+		{
+			return GetKey<INSERT_BEFORE>(aKey);
+		}
 	}
 
 	template<bool KEY_STRING = false, bool VALUE_STRING = false>
