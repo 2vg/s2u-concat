@@ -122,14 +122,16 @@ public:
 
 public:
 	template<bool IS_STRING = false, bool INSERT_BEFORE = true>
-	auto GetKey2(const T &aKey) const -> std::conditional_t<IS_STRING, std::array<T, 5 + INSERT_BEFORE>, std::array<T, 3 + INSERT_BEFORE>>
+	std::array<T, 3 + IS_STRING * 2 + INSERT_BEFORE> GetKey2(const T &aKey) const
 	{
 		if constexpr (IS_STRING)
 		{
 			return GetKeyString<INSERT_BEFORE>(aKey);
 		}
-
-		return GetKey<INSERT_BEFORE>(aKey);
+		else
+		{
+			return GetKey<INSERT_BEFORE>(aKey);
+		}
 	}
 
 	template<bool KEY_STRING = false, bool VALUE_STRING = false>
