@@ -121,7 +121,7 @@ public:
 
 public:
 	template<bool IS_STRING = false, bool INSERT_BEFORE = true>
-	std::array<T, 3 + IS_STRING * 2 + INSERT_BEFORE> GetKey2(const T &aKey) const
+	auto GetKey2(const T &aKey) const
 	{
 		if constexpr (IS_STRING)
 		{
