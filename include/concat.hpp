@@ -29,6 +29,7 @@
 #	include <stddef.h>
 
 #	include <array>
+#	include <type_traits>
 
 #	include <tier0/platform.h>
 #	include <tier0/bufferstring.h>
@@ -121,7 +122,7 @@ public:
 
 public:
 	template<bool IS_STRING = false, bool INSERT_BEFORE = true>
-	auto GetKey2(const T &aKey) const
+	auto GetKey2(const T &aKey) const -> std::conditional_t<IS_STRING, std::array<T, 5 + INSERT_BEFORE>, std::array<T, 3 + INSERT_BEFORE>>
 	{
 		if constexpr (IS_STRING)
 		{
